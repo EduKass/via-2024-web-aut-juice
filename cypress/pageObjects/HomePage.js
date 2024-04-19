@@ -1,4 +1,4 @@
-import { BasePage } from "../pageObjects/basePage";
+import { BasePage } from "../pageObjects/BasePage";
 
 export class HomePage extends BasePage {
   static get url() {

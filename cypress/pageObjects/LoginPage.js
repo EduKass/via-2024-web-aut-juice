@@ -1,4 +1,4 @@
-import { BasePage } from "../pageObjects/basePage";
+import { BasePage } from "../pageObjects/BasePage";
 
 export class LoginPage extends BasePage {
   static get url() {
@@ -6,6 +6,21 @@ export class LoginPage extends BasePage {
   }
 
   static get elementName() {
-    return cy.get("elementSelector");
+    return cy.get("[class='mat-button-wrapper']").contains("Account");
+  }
+  static get clickLogin(){
+    return cy.get("[id='navbarLoginButton']");
+  }
+  static get enterEmail(){
+    return cy.get("[id='email']");
+  }
+  static get enterPassword(){
+    return cy.get("[id='password']");
+  }
+  static get pressLoginEnteredDetails(){
+    return cy.get("[class='mat-button-wrapper']").contains("Log in");
+  }
+  static get checkUserName(){
+    return cy.get("[tabindex='0']");
   }
 }
