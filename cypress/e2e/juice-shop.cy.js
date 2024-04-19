@@ -74,7 +74,7 @@ describe("Juice-shop scenarios", () => {
       // Search for Lemon
       EveryPage.inputInSearchBar.type("Lemon{enter}");
       // Select a product card - Lemon Juice (500ml)
-      EveryPage.clickOnLemon.click();
+      EveryPage.clickOnProduct.click();
       // Validate that the card (should) contains "Sour but full of vitamins."
       EveryPage.checkDescription.should("contain.text", "Sour but full of vitamins.")
     });
@@ -90,7 +90,7 @@ describe("Juice-shop scenarios", () => {
     EveryPage.checkDescription.should("contain.text", "Sour but full of vitamins.");
     });
     // Create scenario - Search 500ml and validate cards
-    it.only("yyy", () => {
+    it("yyy", () => {
     // Click on search icon
     EveryPage.clickOnSearchBar.click();
     // Search for 500ml
@@ -112,14 +112,22 @@ describe("Juice-shop scenarios", () => {
     // Validate that the card (should) contains "Sweet & tasty!"
     EveryPage.checkDescription.should("contain.text", "Sweet & tasty!");
     });
-    
-    // Create scenario - Read a review
-    // Click on search icon
-    // Search for King
-    // Select a product card - OWASP Juice Shop "King of the Hill" Facemask
-    // Click expand reviews button/icon (wait for reviews to appear)
-    // Validate review - K33p5 y0ur ju1cy 5plu773r 70 y0ur53lf!
 
+    // Create scenario - Read a review
+    it.only("zzz", () => {
+    // Click on search icon
+    EveryPage.clickOnSearchBar.click();
+    // Search for King
+    EveryPage.inputInSearchBar.type("King{enter}");
+    // Select a product card - OWASP Juice Shop "King of the Hill" Facemask
+    EveryPage.clickOnProduct.click();
+    // Click expand reviews button/icon (wait for reviews to appear)
+    cy.wait(1000);
+    EveryPage.expandReview.click();
+    // Validate review - K33p5 y0ur ju1cy 5plu773r 70 y0ur53lf!
+    EveryPage.validateReview.should("contain.text", "K33p5 y0ur ju1cy 5plu773r 70 y0ur53lf!");
+    });
+    
     // Create scenario - Add a review
     // Click on search icon
     // Search for Raspberry
