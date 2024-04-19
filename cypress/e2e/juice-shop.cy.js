@@ -7,6 +7,8 @@ import { PaymentOptionsPage } from "../pageObjects/PaymentOptionsPage";
 import { DeliveryMethodPage } from "../pageObjects/DeliveryMethodPage";
 import { SelectAddressPage } from "../pageObjects/SelectAddressPage";
 import { OrderCompletionPage } from "../pageObjects/OrderCompletionPage";
+import { SavedAddressesPage } from "../pageObjects/SavedAddressesPage";
+import { CreateAddressPage } from "../pageObjects/CreateAddressPage";
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
     beforeEach(() => {
@@ -171,7 +173,7 @@ describe("Juice-shop scenarios", () => {
     });
 
     // Create scenario - Buy Girlie T-shirt
-    it.only(" Buy Girlie T-shirt", () => {
+    it(" Buy Girlie T-shirt", () => {
     // Click on search icon
     EveryPage.clickOnSearchBar.click();
     // Search for Girlie
@@ -205,17 +207,31 @@ describe("Juice-shop scenarios", () => {
     // Validate confirmation - "Thank you for your purchase!"
     OrderCompletionPage.validateOrderCompletion.should("contain.text", "Thank you for your purchase!");
     });
+
     // Create scenario - Add address
+    it.only("Add adress", () => {
     // Click on Account
+    LoginPage.elementName.contains("Account").click();
     // Click on Orders & Payment
+    EveryPage.selectOrdersAndPayments.contains(" Orders & Payment ").click();
     // Click on My saved addresses
+    EveryPage.selectMySavedAddresses.click();
     // Create page object - SavedAddressesPage
     // Click on Add New Address
+    SavedAddressesPage.addNewAddresses.click();
     // Create page object - CreateAddressPage
     // Fill in the necessary information
+    CreateAddressPage.enterCountry.type("Latvia");
+    CreateAddressPage.enterName.type("Eduards");
+    CreateAddressPage.enterMobileNumber.type("2323232");
+    CreateAddressPage.enterZIPcode.type("LV-4500");
+    CreateAddressPage.enterAddress.type("ka butu ar ne");
+    CreateAddressPage.enterCity.type("Valmiera");
     // Click Submit button
+    CreateAddressPage.submitAddress.click();
     // Validate that previously added address is visible
-
+    CreateAddressPage.validateAddress.should("contain.text","ka butu ar ne");
+    });
     // Create scenario - Add payment option
     // Click on Account
     // Click on Orders & Payment
