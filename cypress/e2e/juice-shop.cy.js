@@ -114,7 +114,7 @@ describe("Juice-shop scenarios", () => {
     });
 
     // Create scenario - Read a review
-    it.only("zzz", () => {
+    it("zzz", () => {
     // Click on search icon
     EveryPage.clickOnSearchBar.click();
     // Search for King
@@ -127,17 +127,29 @@ describe("Juice-shop scenarios", () => {
     // Validate review - K33p5 y0ur ju1cy 5plu773r 70 y0ur53lf!
     EveryPage.validateReview.should("contain.text", "K33p5 y0ur ju1cy 5plu773r 70 y0ur53lf!");
     });
-    
+
     // Create scenario - Add a review
+    it.only("xyz", () => {
     // Click on search icon
+    EveryPage.clickOnSearchBar.click();
     // Search for Raspberry
+    EveryPage.inputInSearchBar.type("Raspberry{enter}");
     // Select a product card - Raspberry Juice (1000ml)
+    EveryPage.clickOnProduct.click();
     // Type in review - "Tastes like metal"
+    cy.wait(1000);
+    EveryPage.enterReview.type("Tastes like metal");
+    cy.wait(1000);
     // Click Submit
+    EveryPage.submitReview.contains("Submit").click();
     // Click expand reviews button/icon (wait for reviews to appear)
+    EveryPage.expandReview.click();
     // Validate review -  "Tastes like metal"
+    EveryPage.validateReview.should("contain.text", "Tastes like metal");
+    });
 
     // Create scenario - Validate product card amount
+    
     // Validate that the default amount of cards is 12
     // Change items per page (at the bottom of page) to 24
     // Validate that the amount of cards is 24
