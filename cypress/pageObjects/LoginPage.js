@@ -6,7 +6,7 @@ export class LoginPage extends BasePage {
   }
 
   static get elementName() {
-    return cy.get("[class='mat-button-wrapper']").contains("Account");
+    return cy.get("[class='mat-button-wrapper']");
   }
   static get clickLogin(){
     return cy.get("[id='navbarLoginButton']");
@@ -22,5 +22,8 @@ export class LoginPage extends BasePage {
   }
   static get checkUserName(){
     return cy.get("[tabindex='0']");
+  }
+  static get newCustomer(){
+    cy.get("[id='newCustomerLink']");
   }
 }

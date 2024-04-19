@@ -9,9 +9,9 @@ describe("Juice-shop scenarios", () => {
       HomePage.meWantItButton.click();
     });
 
-    it.only("Login", () => {
+    it("Login", () => {
       // Click Account button
-      LoginPage.elementName.click();
+      LoginPage.elementName.contains("Account").click();
       // Click Login button
       LoginPage.clickLogin.click();
       // Set email value to "demo"
@@ -21,15 +21,18 @@ describe("Juice-shop scenarios", () => {
       // Click Log in
       LoginPage.pressLoginEnteredDetails.click();
       // Click Account button
-      LoginPage.elementName.click();
+      LoginPage.elementName.contains("Account").click();
       // Validate that "demo" account name appears in the menu section
       LoginPage.checkUserName.contains("demo");
     });
 
-    it("Registration", () => {
+    it.only("Registration", () => {
       // Click Account button
+      LoginPage.elementName.contains("Account").click();
       // Login button
+      LoginPage.clickLogin.click();
       // Click "Not yet a customer?"
+      LoginPage.newCustomer.contains("Not yet a customer").click();
       // Find - how to generate random number in JS
       // Use that number to genarate unique email address, e.g.: email_7584@ebox.com
       // Save that email address to some variable
