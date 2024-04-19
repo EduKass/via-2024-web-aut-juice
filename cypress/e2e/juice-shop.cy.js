@@ -1,6 +1,6 @@
 import { HomePage } from "../pageObjects/HomePage";
 import { LoginPage } from "../pageObjects/LoginPage";
-
+import { EveryPage } from "../pageObjects/EveryPage";
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
     beforeEach(() => {
@@ -26,7 +26,7 @@ describe("Juice-shop scenarios", () => {
       LoginPage.checkUserName.contains("demo");
     });
 
-    it.only("Registration", () => {
+    it("Registration", () => {
       // Click Account button
       LoginPage.elementName.contains("Account").click();
       // Login button
@@ -68,11 +68,15 @@ describe("Juice-shop scenarios", () => {
       HomePage.visit();
     });
 
-    it("Search and validate Lemon", () => {
+    it.only("Search and validate Lemon", () => {
       // Click on search icon
+      EveryPage.clickOnSearchBar.click();
       // Search for Lemon
+      EveryPage.inputInSearchBar.type("Lemon{enter}");
       // Select a product card - Lemon Juice (500ml)
+      EveryPage.clickOnLemon.click();
       // Validate that the card (should) contains "Sour but full of vitamins."
+      EveryPage.checkDescription.should("contain.text", "Sour but full of vitamins.")
     });
 
     // Create scenario - Search 500ml and validate Lemon, while having multiple cards
