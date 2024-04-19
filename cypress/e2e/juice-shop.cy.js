@@ -9,6 +9,7 @@ import { SelectAddressPage } from "../pageObjects/SelectAddressPage";
 import { OrderCompletionPage } from "../pageObjects/OrderCompletionPage";
 import { SavedAddressesPage } from "../pageObjects/SavedAddressesPage";
 import { CreateAddressPage } from "../pageObjects/CreateAddressPage";
+import { SavedPaymentMethodsPage } from "../pageObjects/SavedPaymentMethodsPage";
 describe("Juice-shop scenarios", () => {
   context("Without auto login", () => {
     beforeEach(() => {
@@ -209,7 +210,7 @@ describe("Juice-shop scenarios", () => {
     });
 
     // Create scenario - Add address
-    it.only("Add adress", () => {
+    it("Add adress", () => {
     // Click on Account
     LoginPage.elementName.contains("Account").click();
     // Click on Orders & Payment
@@ -232,17 +233,30 @@ describe("Juice-shop scenarios", () => {
     // Validate that previously added address is visible
     CreateAddressPage.validateAddress.should("contain.text","ka butu ar ne");
     });
+
     // Create scenario - Add payment option
+    it.only("Add payment", () => {
     // Click on Account
+    LoginPage.elementName.contains("Account").click();
     // Click on Orders & Payment
+    EveryPage.selectOrdersAndPayments.contains(" Orders & Payment ").click();
     // Click on My payment options
+    EveryPage.selectMyPaymentOptions.click();
     // Create page object - SavedPaymentMethodsPage
     // Click Add new card
+    SavedPaymentMethodsPage.clickAddCard.click();
     // Fill in Name
+    SavedPaymentMethodsPage.name.type("John Doe");
     // Fill in Card Number
+    SavedPaymentMethodsPage.fillInCardNumber.type("1212121212121212");
     // Set expiry month to 7
+    SavedPaymentMethodsPage.setExpiryMonth.select(6);
     // Set expiry year to 2090
+    SavedPaymentMethodsPage.setExpiryYear.select(10);
     // Click Submit button
+    SavedPaymentMethodsPage.SUBMITFINALLY.contains("send").click();
     // Validate that the card shows up in the list
+    SavedPaymentMethodsPage.VALIDATE.contains("John Doe");
+    });
   });
 });
