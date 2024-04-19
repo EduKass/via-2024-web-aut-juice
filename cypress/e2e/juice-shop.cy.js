@@ -78,9 +78,8 @@ describe("Juice-shop scenarios", () => {
       // Validate that the card (should) contains "Sour but full of vitamins."
       EveryPage.checkDescription.should("contain.text", "Sour but full of vitamins.")
     });
-
-    it.only("xxx", () => {
     // Create scenario - Search 500ml and validate Lemon, while having multiple cards
+    it("xxx", () => {
     // Click on search icon
     EveryPage.clickOnSearchBar.click();
     // Search for 500ml
@@ -88,20 +87,32 @@ describe("Juice-shop scenarios", () => {
     // Select a product card - Lemon Juice (500ml)
     EveryPage.clickOnLemon500.click();
     // Validate that the card (should) contains "Sour but full of vitamins."
-    EveryPage.checkDescription.should("contain.text", "Sour but full of vitamins.")
+    EveryPage.checkDescription.should("contain.text", "Sour but full of vitamins.");
     });
     // Create scenario - Search 500ml and validate cards
+    it.only("yyy", () => {
     // Click on search icon
+    EveryPage.clickOnSearchBar.click();
     // Search for 500ml
+    EveryPage.inputInSearchBar.type("500ml{enter}");
     // Select a product card - Eggfruit Juice (500ml)
+    EveryPage.selectEggFruit500.click();
     // Validate that the card (should) contains "Now with even more exotic flavour."
+    EveryPage.checkDescription.should("contain.text", "Now with even more exotic flavour.");
     // Close the card
+    EveryPage.exitDesc.contains("close").click();
     // Select a product card - Lemon Juice (500ml)
+    EveryPage.clickOnLemon500.click();
     // Validate that the card (should) contains "Sour but full of vitamins."
+    EveryPage.checkDescription.should("contain.text", "Sour but full of vitamins.");
     // Close the card
+    EveryPage.exitDesc.contains("close").click();
     // Select a product card - Strawberry Juice (500ml)
+    EveryPage.selectStrawberry500.click();
     // Validate that the card (should) contains "Sweet & tasty!"
-
+    EveryPage.checkDescription.should("contain.text", "Sweet & tasty!");
+    });
+    
     // Create scenario - Read a review
     // Click on search icon
     // Search for King
