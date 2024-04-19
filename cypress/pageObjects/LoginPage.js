@@ -35,4 +35,22 @@ export class LoginPage extends BasePage {
   static get enterEmailRegistration(){
     return cy.get("[id='emailControl']");
   }
+  static get enterPasswordRegistartion(){
+    return cy.get('[id="passwordControl"]');
+  }
+  static get repeatenterPasswordRegistartion(){
+    return cy.get('[id="repeatPasswordControl"]');
+  }
+  static get clickSecurityQuestion(){
+    return cy.get('[name="securityQuestion"]');
+  }
+  static get chooseSecurityQuestion(){
+    return cy.get('[class="mat-option-text"]');
+  }
+  static get answerSecurityQuestion(){
+    return cy.get('[id="securityAnswerControl"]');
+  }
+  static get registerNewAccount(){
+    return cy.get('[class="material-icons"]');
+  }
 }

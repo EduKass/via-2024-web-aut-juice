@@ -39,15 +39,26 @@ describe("Juice-shop scenarios", () => {
       var email = LoginPage.generateEmail();
       LoginPage.enterEmailRegistration.type(email);
       // Fill in password field and repeat password field with same password
+      LoginPage.enterPasswordRegistartion.type("password123");
+      LoginPage.repeatenterPasswordRegistartion.type("password123");
       // Click on Security Question menu
+      LoginPage.clickSecurityQuestion.click();
       // Select  "Name of your favorite pet?"
+      LoginPage.chooseSecurityQuestion.contains("pet").click();
       // Fill in answer
+      LoginPage.answerSecurityQuestion.type("pika");
       // Click Register button
+      LoginPage.registerNewAccount.contains("person_add").click();
       // Set email value to previously created email
+      LoginPage.enterEmail.type(email);
       // Set password value to previously used password value
+      LoginPage.enterPassword.type("password123");
       // Click login button
+      LoginPage.pressLoginEnteredDetails.click();
       // Click Account button
+      LoginPage.elementName.contains("Account").click();
       // Validate that account name (with previously created email address) appears in the menu section
+      LoginPage.checkUserName.contains(email);
     });
   });
 
