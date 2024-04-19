@@ -32,10 +32,12 @@ describe("Juice-shop scenarios", () => {
       // Login button
       LoginPage.clickLogin.click();
       // Click "Not yet a customer?"
-      LoginPage.newCustomer.contains("Not yet a customer").click();
+      LoginPage.newCustomer.click();
       // Find - how to generate random number in JS
       // Use that number to genarate unique email address, e.g.: email_7584@ebox.com
       // Save that email address to some variable
+      var email = LoginPage.generateEmail();
+      LoginPage.enterEmailRegistration.type(email);
       // Fill in password field and repeat password field with same password
       // Click on Security Question menu
       // Select  "Name of your favorite pet?"

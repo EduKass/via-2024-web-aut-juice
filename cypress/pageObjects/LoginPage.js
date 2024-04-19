@@ -24,6 +24,15 @@ export class LoginPage extends BasePage {
     return cy.get("[tabindex='0']");
   }
   static get newCustomer(){
-    cy.get("[id='newCustomerLink']");
+    return cy.get("[id='newCustomerLink']");
+  }
+  static generateEmail(){
+    var randomNumberInRange = Math.random() * 100;
+    var roundedRandomNumber = Math.round(randomNumberInRange);
+    var email = "email_" + roundedRandomNumber + "@ebox.com";
+    return email;
+  }
+  static get enterEmailRegistration(){
+    return cy.get("[id='emailControl']");
   }
 }
